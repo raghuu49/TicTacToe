@@ -20,16 +20,32 @@ boxes.forEach((box)=>{
        box.disabled=true;
        turnO=true;
        checkWinner();
+     if(!winner)checkBoxes();
       if(!winner){
        setTimeout(()=>{
         nextTurn();
         turnO=false;
         checkWinner();
+       if(!winner)checkBoxes();
        },500);
     }
     });
 
 });
+const checkBoxes=()=>{
+    let draw=true;
+    for(let i=0;i<boxes.length;i++){
+        if(boxes[i].textContent===''){
+            draw=false;
+            break;
+        }
+    }
+    if(draw){
+        winner=true;
+        disableBoxes();
+        alert(`Match Draw`);
+    }
+};
 const checkWinner=()=>{
     for(let pattern of winningPatterns){
         let pos1=pattern[0];pos2=pattern[1];pos3=pattern[2];
