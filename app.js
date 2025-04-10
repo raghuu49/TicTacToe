@@ -55,4 +55,5 @@ reset.addEventListener("click",()=>{
         box.disabled=false;
     });
     turnO=false;
+   winner=false;
 });
